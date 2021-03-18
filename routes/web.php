@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
+
+
+
+Route::get('/', 'WebController@index')->name('web.index');
