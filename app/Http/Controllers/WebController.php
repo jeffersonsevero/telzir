@@ -63,8 +63,8 @@ class WebController extends Controller
             ->first();
 
         $withFaleMais = $this->withFaleMais($time, $plan, $mapping->value_per_minute);
+        $withOutFaleMais = $this->withOutFaleMais($time, $mapping->value_per_minute);
 
-        var_dump($withFaleMais);
 
 
     }
@@ -97,14 +97,14 @@ class WebController extends Controller
     }
 
 
-    private function withOutFaleMais()
+    private function withOutFaleMais(int $time,  float $valuePerMinute): float
     {
+        return $time * $valuePerMinute;
+
     }
 
 
-    private function calcFee(int $minutes, float $valuePerMinute)
-    {
-    }
+
 
 
     private function ajaxResponse(string $param, array $values): string
