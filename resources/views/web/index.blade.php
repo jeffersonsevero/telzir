@@ -57,10 +57,10 @@
                         <hr>
                         <ul class="fa-ul">
                             <li><span class="fa-li"><i class="fas fa-check"></i></span><strong> Fale grátis por
-                                    {{ $plan->minutes }}</strong>
+                                    {{ $plan->minutes }} minutos</strong>
                             </li>
                             <li><span class="fa-li"><i class="fas fa-check"></i></span> Apenas 10% sobre a taxa depois
-                                dos {{ $plan->minutes }} </li>
+                                dos {{ $plan->minutes }} minutos </li>
 
                         </ul>
                     </div>
@@ -89,7 +89,7 @@
 
     <div class="container py-5">
 
-        <h1 class="text-center text-primary ">Faça agora a sua simulação</h1>
+        <h1 class="text-center text-primary">Faça agora a sua simulação</h1>
 
 
         <div class="row">
@@ -106,7 +106,7 @@
                     @csrf
 
                     <div class="form-group">
-                        <label class="text-primary text-uppercase" for="origin">Origem</label>
+                        <h5 class="text-primary text-bold text-uppercase" for="origin">Origem</h5>
                         <select class="form-control" name="origin" id="origin">
 
                             @foreach ($control as $controlItem)
@@ -120,7 +120,7 @@
 
 
                     <div class="form-group">
-                        <label class="text-primary text-uppercase" for="destiny">Destino</label>
+                        <h5 class="text-primary text-uppercase" for="destiny">Destino</h5>
                         <select class="form-control" name="destiny" id="destiny">
 
                             @foreach ($control as $controlItem)
@@ -135,7 +135,7 @@
 
                     <div class="form-group">
 
-                        <label for="time">Tempo em minutos</label>
+                        <h5 class="text-primary text-uppercase" for="time">Tempo em minutos</h5>
                         <input type="number" id="time" name="time" class="form-control">
 
 
@@ -146,14 +146,15 @@
                         @foreach ($plans as $plan)
 
                         <input type="radio" name="plan" value="{{ $plan->id }}" id="plan">
-                        <label class="mr-3" for="plan"> {{ $plan->name }} </label>
+                        <label  class="mr-4 text-primary"  for="plan"> {{ $plan->name }} </label>
 
 
                         @endforeach
 
                     </div>
 
-                    <input type="submit" value="Simular" class="btn btn-lg btn-primary">
+
+                    <button type="submit" class="btn btn-lg btn-primary">  <i class="fas fa-arrow-right"></i>  Simular </button>
 
                 </form>
 
@@ -163,14 +164,16 @@
             </div>
 
 
-            <div class="col-md-6">
-
-                <div class="ajax_load">
-                    <div class="ajax_load_box">
-                        <div class="ajax_load_box_circle"></div>
-                        <div class="ajax_load_box_title">Aguarde, carrengando...</div>
-                    </div>
+            <div class="ajax_load">
+                <div class="ajax_load_box">
+                    <div class="ajax_load_box_circle"></div>
+                    <div class="ajax_load_box_title">Aguarde, carrengando...</div>
                 </div>
+            </div>
+
+            <div class="col-md-6" id="result">
+
+
 
 
             </div>
@@ -218,8 +221,21 @@
                     return;
                 }
 
-                if (su.redirect) {
-                    window.location.href = su.redirect.url;
+                if (su.data) {
+
+
+
+                    let card1 = `<div class="card">  <div class="card-body">  <h5 class="card-title text-muted text-uppercase text-center"> Com o  ${su.data.plan}  </h5>  <h2 class="text-center text-success"> $ ${su.data.withPlan.toFixed(2)} </h2>   </div>   </div> `;
+                    let card2 = `<div class="card">  <div class="card-body">  <h5 class="card-title text-muted text-uppercase text-center"> Sem o  ${su.data.plan}  </h5>  <h2 class="text-center text-success"> $ ${su.data.withOutPlan.toFixed(2)} </h2>   </div>   </div> `;
+
+                    let cards = card1 + card2;
+
+                    $("#result").html(cards);
+                    $("#result").effect("bounce");
+
+
+
+
                 }
             }
         });

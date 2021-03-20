@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mapping;
 use App\Plan;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class WebController extends Controller
 {
@@ -62,9 +63,29 @@ class WebController extends Controller
             ->where("destiny", $data->destiny)
             ->first();
 
+
+        if(!$mapping){
+
+            echo $this->ajaxResponse("message", [
+                "type" => "error",
+                "message" => "Rota ainda não mapeada!"
+            ]);
+
+            return;
+
+        }
+
         $withFaleMais = $this->withFaleMais($time, $plan, $mapping->value_per_minute);
         $withOutFaleMais = $this->withOutFaleMais($time, $mapping->value_per_minute);
 
+
+        echo $this->ajaxResponse("data", [
+            "withPlan" => $withFaleMais,
+            "withOutPlan" => $withOutFaleMais,
+            "plan" => $plan->name
+        ]);
+
+        return;
 
 
     }
@@ -75,7 +96,7 @@ class WebController extends Controller
 
 
 
-    private function withFaleMais(int $time, Plan $plan, float $valuePerMinute): float
+    public  function withFaleMais(int $time, Plan $plan, float $valuePerMinute): float
     {
 
         if ($time <= $plan->minutes) {
@@ -97,13 +118,20 @@ class WebController extends Controller
     }
 
 
-    private function withOutFaleMais(int $time,  float $valuePerMinute): float
+    public function withOutFaleMais(int $time,  float $valuePerMinute): float
     {
         return $time * $valuePerMinute;
 
     }
 
 
+
+
+    private function validate(Request $request): voidtrue {
+
+        return true;
+
+    }
 
 
 
