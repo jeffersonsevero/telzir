@@ -17,3 +17,6 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 
 Route::get('/', 'WebController@index')->name('web.index');
+
+
+Route::post("/send-form","WebController@post")->name('web.post');

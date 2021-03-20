@@ -99,16 +99,21 @@
             <div class="col-md-6 py-3">
 
 
+                <div class="callback">
+                </div>
 
-                <form action="" method="post">
+                <form action="{{ route('web.post') }}" method="post">
+                    @csrf
 
                     <div class="form-group">
                         <label class="text-primary text-uppercase" for="origin">Origem</label>
                         <select class="form-control" name="origin" id="origin">
-                            <option value="">01</option>
-                            <option value="">01</option>
-                            <option value="">01</option>
-                            <option value="">01</option>
+
+                            @foreach ($control as $controlItem)
+                            <option value="{{ $controlItem->origin }}"> {{ $controlItem->origin }} </option>
+
+                            @endforeach
+
                         </select>
 
                     </div>
@@ -117,10 +122,12 @@
                     <div class="form-group">
                         <label class="text-primary text-uppercase" for="destiny">Destino</label>
                         <select class="form-control" name="destiny" id="destiny">
-                            <option value="">01</option>
-                            <option value="">01</option>
-                            <option value="">01</option>
-                            <option value="">01</option>
+
+                            @foreach ($control as $controlItem)
+                            <option value="{{ $controlItem->destiny }}"> {{ $controlItem->destiny }} </option>
+
+                            @endforeach
+
                         </select>
 
                     </div>
@@ -134,12 +141,11 @@
 
                     </div>
 
-
                     <div class="form-group">
 
                         @foreach ($plans as $plan)
 
-                        <input type="radio" name="plan" id="plan">
+                        <input type="radio" name="plan" value="{{ $plan->id }}" id="plan">
                         <label class="mr-3" for="plan"> {{ $plan->name }} </label>
 
 
@@ -155,6 +161,8 @@
 
 
             </div>
+
+
             <div class="col-md-6">
 
                 <div class="ajax_load">
@@ -181,14 +189,54 @@
 @endsection
 
 
-
-
 @section('js')
 
 <script>
+    $(function () {
+    $("form").submit(function (e) {
+        e.preventDefault();
 
+        var form = $(this);
+        var action = form.attr("action");
+        var data = form.serialize();
 
+        $.ajax({
+            url: action,
+            data: data,
+            type: "post",
+            dataType: "json",
+            beforeSend: function (load) {
+                ajax_load("open");
+            },
+            success: function (su) {
+                ajax_load("close");
 
+                if (su.message) {
+                    var view = '<div class="message ' + su.message.type + '">' + su.message.message + '</div>';
+                    $(".callback").html(view);
+                    $(".message").effect("bounce");
+                    return;
+                }
+
+                if (su.redirect) {
+                    window.location.href = su.redirect.url;
+                }
+            }
+        });
+
+        function ajax_load(action) {
+            ajax_load_div = $(".ajax_load");
+
+            if (action === "open") {
+                ajax_load_div.fadeIn(300).css("display", "flex");
+            }
+
+            if (action === "close") {
+                ajax_load_div.fadeOut(300);
+            }
+        }
+    });
+});
 
 
 </script>
