@@ -1,6 +1,11 @@
 
 
 
+*{
+    font-family: 'Open sans', sans-serif;
+}
+
+
 
 section.pricing {
     background: #007bff;
@@ -20,7 +25,7 @@ section.pricing {
 
   .pricing .card-title {
     margin: 0.5rem 0;
-    font-size: 0.9rem;
+    font-size: 3rem !important;
     letter-spacing: .1rem;
     font-weight: bold;
   }
