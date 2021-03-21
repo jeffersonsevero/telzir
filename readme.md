@@ -115,7 +115,7 @@ $ php artisan serve --host localhost:porta
 Feito com ❤️ por Jefferson Severo 👋🏽 Entre em contato!
 
 [![Linkedin Badge](https://img.shields.io/badge/-Jefferson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/jefferson-severo-83760a152/) 
-[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
+[![Gmail Badge](https://img.shields.io/badge/-jeffersonsevero08@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:jeffersonsevero08@gmail.com)
 
 
 ## License
