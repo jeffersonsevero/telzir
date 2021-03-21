@@ -52,87 +52,43 @@
 
 
 
-
     <!-- Footer -->
     <footer class="bg-primary text-center text-white">
-        <!-- Grid container -->
         <div class="container p-4">
-            <!-- Section: Social media -->
-            <section class="mb-4">
+            <section class="">
 
 
 
-                <!-- Google -->
-                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="jeffersonsevero08@gmail.com" role="button"><i
-                        class="fab fa-google"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="jeffersonsevero08@gmail.com"
+                    role="button"><i class="fab fa-google"></i></a>
 
-                <!-- Instagram -->
-                <a target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/jeffersonccss/" role="button"><i
-                        class="fab fa-instagram"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://www.instagram.com/jeffersonccss/" role="button"><i class="fab fa-instagram"></i></a>
 
-                <!-- Linkedin -->
-                <a  target="_blank" class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/jefferson-severo-83760a152/" role="button"><i
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://www.linkedin.com/in/jefferson-severo-83760a152/" role="button"><i
                         class="fab fa-linkedin-in"></i></a>
 
-                <!-- Github -->
-                <a  target="_blank"class="btn btn-outline-light btn-floating m-1" href="https://github.com/jeffersonsevero" role="button"><i
-                        class="fab fa-github"></i></a>
+                <a target="_blank" class="btn btn-outline-light btn-floating m-1"
+                    href="https://github.com/jeffersonsevero" role="button"><i class="fab fa-github"></i></a>
             </section>
-            <!-- Section: Social media -->
 
 
 
-            <!-- Section: Text -->
-            <section class="mb-4">
+            <section class="">
                 <p>
                     Todos os direitos reservaos!
                 </p>
-            </section>
-            <!-- Section: Text -->
 
-            <!-- Section: Links -->
-            <section class="">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-
-                    </div>
-                    <!--Grid column-->
+                <div class="text-center p-3">
+                    © {{ date('Y') }} Copyright:
+                    <p>Feito por <em>Jefferson C. Severo</em> </p>
                 </div>
-                <!--Grid row-->
             </section>
-            <!-- Section: Links -->
-        </div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
-            <p>Feito por <em>Jefferson C. Severo</em> </p>
         </div>
-        <!-- Copyright -->
+
+
     </footer>
     <!-- Footer -->
 

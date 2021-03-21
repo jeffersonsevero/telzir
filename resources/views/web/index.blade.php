@@ -38,9 +38,6 @@
     <div class="container">
 
 
-
-
-
         <div class="row">
 
 
@@ -141,7 +138,7 @@
 
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="radios">
 
                         @foreach ($plans as $plan)
 

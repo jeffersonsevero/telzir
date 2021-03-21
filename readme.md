@@ -5,6 +5,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+
+
+
+## Prévia da aplicação
+
+<img src="https://ik.imagekit.io/lrrw3mrhils/screenshot_1_tlwsDRgcVY.png">
+
+
+
 ## Sobre
 
 Telzir é um empresa especializada em chamadas telefonicas de loga distância e este sistema tem como objetivo trazer uma nova funcionalidades para os clientes telzir. Atualmente, nossos clientes são cobrados em uma taxa por minuto, essa taxa varia de acordo com a cidade de origem e destino para qual o cliente está ligando. Mas como sempre prezamos pela qualidade dos nossas serviços bem como a satisfação do nosso clientes, teremos as seguintes novidades.
@@ -12,7 +21,7 @@ Telzir é um empresa especializada em chamadas telefonicas de loga distância e 
 - O cliente vai poder escolhe dentre planos de telefonia
 - Cada plano dará ao cliente um determinado número de minutos grátis :D
 - Para cada minuto excedente à esse número de minutos grátis, será cobrado um pequeno pequeno adicional de 10% sobre o valor convencional de minuto.
-- Haverá um pequeno dashborad para o cadastro dos planos, minutos, e DDDs
+
 
 ## Tecnologias usadas
 
@@ -60,7 +69,7 @@ CREATE DATABASE telzir;
 
 
 
-- Pegue o arquivo chamado dump.sql na raiz do projeto e rode em um terminal sql para persirtir alguns dados.
+- Pegue o arquivo chamado telzir.sql na raiz do projeto e rode em um terminal sql para persirtir alguns dados.
 
 
 
@@ -84,6 +93,15 @@ $ php artisan serve --host localhost:porta
 ```
 
 
+## Partes importantes
+
+- O arquivo de controlador dessa aplicação está em app/Http/Controllers/WebController.php
+
+- Já a view principal está em resources/views/web/index
+
+
+
+
 
 ## Testes
 - O Laravel já vem por padrão equipado com o PHPUnit que é o componente para testes mais conhecido do PHP.
@@ -94,13 +112,10 @@ $ php artisan serve --host localhost:porta
 
 
 
-
 - Para rodar os testes execute o seguinte comando na raiz do projeto:
 ```bash
  $ ./vendor/bin/phpunit  
 ```
-
-
 
 
 ### Autor

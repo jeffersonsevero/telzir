@@ -172,4 +172,8 @@ section.pricing {
         width: 100%;
     }
 
+    #radios{
+        display: flex;
+    }
+
   }

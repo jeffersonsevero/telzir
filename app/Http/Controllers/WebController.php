@@ -10,7 +10,11 @@ use PhpParser\Node\Expr\FuncCall;
 class WebController extends Controller
 {
 
-
+    /**
+     * Rendezira a página principal
+     *
+     * @return void
+     */
     public function index()
     {
 
@@ -27,6 +31,12 @@ class WebController extends Controller
     }
 
 
+    /**
+     * Recebe os dados do formulário da página inicial
+     *
+     * @param Request $data
+     * @return void
+     */
     public function post(Request $data): void
     {
 
@@ -39,7 +49,7 @@ class WebController extends Controller
             return;
         }
 
-        if (!filter_var($data->time, FILTER_VALIDATE_INT)) {
+        if (!filter_var($data->time, FILTER_VALIDATE_INT) || $data->time < 0) {
 
             echo $this->ajaxResponse("message", [
                 "type" => "error",
@@ -91,8 +101,14 @@ class WebController extends Controller
     }
 
 
-
-
+    /**
+     * Retorna o valor esperado para qualquer plano
+     *
+     * @param integer $time
+     * @param Plan $plan
+     * @param float $valuePerMinute
+     * @return float
+     */
     public  function withFaleMais(int $time, Plan $plan, float $valuePerMinute): float
     {
 
@@ -115,6 +131,13 @@ class WebController extends Controller
     }
 
 
+    /**
+     * Retorna o valor quando não se usa plano
+     *
+     * @param integer $time
+     * @param float $valuePerMinute
+     * @return float
+     */
     public function withOutFaleMais(int $time,  float $valuePerMinute): float
     {
         return $time * $valuePerMinute;
@@ -122,11 +145,13 @@ class WebController extends Controller
     }
 
 
-
-
-
-
-
+    /**
+     * Método de auxílio para requisições ajax
+     *
+     * @param string $param
+     * @param array $values
+     * @return string
+     */
     private function ajaxResponse(string $param, array $values): string
     {
         return json_encode([$param => $values]);
