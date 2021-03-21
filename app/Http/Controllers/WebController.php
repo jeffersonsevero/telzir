@@ -127,11 +127,6 @@ class WebController extends Controller
 
 
 
-    private function validate(Request $request): voidtrue {
-
-        return true;
-
-    }
 
 
 

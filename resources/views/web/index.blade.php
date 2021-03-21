@@ -223,7 +223,7 @@
 
                 if (su.data) {
 
-
+                    $(".message").fadeOut(300);
 
                     let card1 = `<div class="card">  <div class="card-body">  <h5 class="card-title text-muted text-uppercase text-center"> Com o  ${su.data.plan}  </h5>  <h2 class="text-center text-success"> $ ${su.data.withPlan.toFixed(2)} </h2>   </div>   </div> `;
                     let card2 = `<div class="card">  <div class="card-body">  <h5 class="card-title text-muted text-uppercase text-center"> Sem o  ${su.data.plan}  </h5>  <h2 class="text-center text-success"> $ ${su.data.withOutPlan.toFixed(2)} </h2>   </div>   </div> `;

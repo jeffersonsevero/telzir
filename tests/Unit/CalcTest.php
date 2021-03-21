@@ -54,11 +54,6 @@ class CalcTest extends TestCase
 
 
 
-
-
-
-
-
     /**
      * FUNTIONS THAT USE PROVIDERS
      */

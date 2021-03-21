@@ -1,9 +1,7 @@
-<p align="center"><img src="public/images/logo_telzir.png"></p>
+<p align="center"><img width="150" src="public/images/logo_telzir.png"></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
@@ -58,7 +56,66 @@ CREATE DATABASE telzir;
 
 - Configure o seu arquivo .env localizado na raiz do projeto com as suas credenciais de banco de dados
 
+<img src="https://ik.imagekit.io/lrrw3mrhils/screenshot_feZkTuSJhm.png">
 
+
+
+- Pegue o arquivo chamado dump.sql na raiz do projeto e rode em um terminal sql para persirtir alguns dados.
+
+
+
+## Executando o projeto
+
+- Dentro da raiz do projeto, execute o seguinte comando para puxar as dependências composer, caso necessite.
+
+```bash
+$ composer install
+```
+
+- Ainda dentro da raiz do projeto, execute o seguinte comando para iniciar o servidor da aplicação:
+
+```bash
+$ php artisan serve
+```
+- Esse comando irá abrir um servidor em localhost na porta 8000
+- Caso você queria abrir em alguma porta de sua preferência execute o seguinte comando
+```bash
+$ php artisan serve --host localhost:porta
+```
+
+
+
+## Testes
+- O Laravel já vem por padrão equipado com o PHPUnit que é o componente para testes mais conhecido do PHP.
+- Para esta aplicação foram feitos alguns testes unitários.
+- Estes ficam localizados na pasta tests que fica na raiz do projeto, dentro de outra pasta chama Unit.
+
+- No arquivo chamado CalcTest.php ficam alguns testes validando as funções que retornam os valores de COM PLANO ou SEM PLANO.
+
+
+
+
+- Para rodar os testes execute o seguinte comando na raiz do projeto:
+```bash
+ $ ./vendor/bin/phpunit  
+```
+
+
+
+
+### Autor
+---
+
+<a href="github.com/jeffersonsevero">
+ <img style="border-radius: 50%;" src="https://ik.imagekit.io/lrrw3mrhils/31740058_968598056636631_7264527737656705024_o_Xeor6hwAD.jpg" width="100px;" alt=""/>
+ <br />
+ <sub><b>Jefferson C. Severo</b></sub></a> <a href="" title="Rocketseat"></a>
+
+
+Feito com ❤️ por Jefferson Severo 👋🏽 Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Jefferson-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/jefferson-severo-83760a152/) 
+[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
 
 
 ## License
