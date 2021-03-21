@@ -93,9 +93,6 @@ class WebController extends Controller
 
 
 
-
-
-
     public  function withFaleMais(int $time, Plan $plan, float $valuePerMinute): float
     {
 
