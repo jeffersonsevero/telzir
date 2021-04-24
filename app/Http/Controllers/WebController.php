@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Mapping;
 use App\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response as FacadesResponse;
 use PhpParser\Node\Expr\FuncCall;
 
 class WebController extends Controller
 {
+
+
+
+
+    private $plan;
+    private $mapping;
+
+    public function __construct(Plan $plan, Mapping $mapping)
+    {
+
+        $this->plan = $plan;
+        $this->mapping = $mapping;
+    }
+
 
     /**
      * Rendezira a página principal
@@ -19,8 +36,8 @@ class WebController extends Controller
     {
 
 
-        $plans = Plan::all();
-        $control = Mapping::all();
+        $plans = $this->plan->all();
+        $control = $this->mapping->all();
 
 
         return view('web.index')->with([
@@ -37,35 +54,10 @@ class WebController extends Controller
      * @param Request $data
      * @return void
      */
-    public function post(Request $data): void
+    public function post(PostRequest $data)
     {
 
-
-        if (in_array("", $data->all())) {
-            echo $this->ajaxResponse("message", [
-                "type" => "error",
-                "message" => "Oops, preencha todos os dados!"
-            ]);
-            return;
-        }
-
-        if (!filter_var($data->time, FILTER_VALIDATE_INT) || $data->time < 0) {
-
-            echo $this->ajaxResponse("message", [
-                "type" => "error",
-                "message" => "Oops, tipo de dado incorreto! Verifique novamente!"
-            ]);
-            return;
-        }
-
-        if (!$data->plan) {
-            echo $this->ajaxResponse("message", [
-                "type" => "error",
-                "message" => "Oops, selecione um plano!"
-            ]);
-            return;
-        }
-
+        /**@var Plan */
         $plan = Plan::find($data->plan);
         $time = $data->time;
 
@@ -74,7 +66,7 @@ class WebController extends Controller
             ->first();
 
 
-        if(!$mapping){
+        if (!$mapping) {
 
             echo $this->ajaxResponse("message", [
                 "type" => "error",
@@ -82,78 +74,22 @@ class WebController extends Controller
             ]);
 
             return;
-
         }
 
-        $withFaleMais = $this->withFaleMais($time, $plan, $mapping->value_per_minute);
-        $withOutFaleMais = $this->withOutFaleMais($time, $mapping->value_per_minute);
+        $withPlan = $plan->getValueWithPlan($time, $mapping->value_per_minute);
+        $withOutPlan = $plan->getValueWithoutPlan($time, $mapping->value_per_minute);
 
 
-        echo $this->ajaxResponse("data", [
-            "withPlan" => $withFaleMais,
-            "withOutPlan" => $withOutFaleMais,
-            "plan" => $plan->name
-        ]);
+        $data = [
 
-        return;
-
-
-    }
+            "data" => [
+                "withPlan" => $withPlan,
+                "withOutPlan" => $withOutPlan,
+                "plan" => $plan->name
+            ]
+        ];
 
 
-    /**
-     * Retorna o valor esperado para qualquer plano
-     *
-     * @param integer $time
-     * @param Plan $plan
-     * @param float $valuePerMinute
-     * @return float
-     */
-    public  function withFaleMais(int $time, Plan $plan, float $valuePerMinute): float
-    {
-
-        if ($time <= $plan->minutes) {
-            return 0;
-        }
-
-        $diff = $time - $plan->minutes;
-
-        $result = 0;
-
-        for($i = 1; $i <= $diff; $i++){
-
-            $result += $valuePerMinute * 1.10;
-
-        }
-
-        return $result;
-
-    }
-
-
-    /**
-     * Retorna o valor quando não se usa plano
-     *
-     * @param integer $time
-     * @param float $valuePerMinute
-     * @return float
-     */
-    public function withOutFaleMais(int $time,  float $valuePerMinute): float
-    {
-        return $time * $valuePerMinute;
-
-    }
-
-
-    /**
-     * Método de auxílio para requisições ajax
-     *
-     * @param string $param
-     * @param array $values
-     * @return string
-     */
-    private function ajaxResponse(string $param, array $values): string
-    {
-        return json_encode([$param => $values]);
+        return FacadesResponse::json($data);
     }
 }

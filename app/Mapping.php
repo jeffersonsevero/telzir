@@ -8,8 +8,7 @@ class Mapping extends Model
 {
 
     protected $table = "mappings";
-    protected $fillable = ["origin","destiny", "value"];
-
+    protected $fillable = ["origin", "destiny", "value"];
 
 
 }

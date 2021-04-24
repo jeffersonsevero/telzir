@@ -143,7 +143,7 @@
                         @foreach ($plans as $plan)
 
                         <input type="radio" name="plan" value="{{ $plan->id }}" id="plan">
-                        <label  class="mr-4 text-primary"  for="plan"> {{ $plan->name }} </label>
+                        <label class="mr-4 text-primary" for="plan"> {{ $plan->name }} </label>
 
 
                         @endforeach
@@ -151,7 +151,8 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-lg btn-primary">  <i class="fas fa-arrow-right"></i>  Simular </button>
+                    <button type="submit" class="btn btn-lg btn-primary"> <i class="fas fa-arrow-right"></i> Simular
+                    </button>
 
                 </form>
 
@@ -210,6 +211,8 @@
             },
             success: function (su) {
                 ajax_load("close");
+
+
 
                 if (su.message) {
                     var view = '<div class="message ' + su.message.type + '">' + su.message.message + '</div>';
